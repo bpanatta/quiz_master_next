@@ -849,6 +849,8 @@ class QMNQuizManager {
 
 			$results_id = $wpdb->insert_id;
 
+			$qmn_array_for_variables['result_id'] = $results_id;
+
 			// Hook is fired after the responses are submitted. Passes responses, result ID, quiz settings, and response data.
 			do_action( 'qsm_quiz_submitted', $results_array, $results_id, $qmn_quiz_options, $qmn_array_for_variables );
 
