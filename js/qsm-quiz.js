@@ -505,7 +505,7 @@ function qmnFormSubmit( quiz_form_id ) {
 
 function qsmDisplayLoading( $container ) {
 	$container.empty();
-	$container.append( '<div class="qsm-spinner-loader"></div>' );
+	$container.append( '<div class="qsm-spinner-container"><div class="qsm-spinner-loader"></div></div>' );
 	qsmScrollTo( $container );
 }
 
