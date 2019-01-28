@@ -282,7 +282,7 @@ var QSM;
 						}
 					});
 				}
-			}			
+			}
 		},
 		/**
 		 * Navigates quiz to specific page
