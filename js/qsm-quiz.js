@@ -597,6 +597,10 @@ function qmnNextSlide( pagination, go_to_top, quiz_form_id ) {
 			$container.find( ".mlw_qmn_quiz_link.mlw_previous" ).show();
 		}
     }
+	if (jQuery( quiz_form_id + " .quiz_section.slide" + (slide_number + 1) ).hasClass('quiz_end')) {
+		slide_number++;
+		jQuery( quiz_form_id + " .quiz_section.slide" + slide_number ).show();
+	}
 	if (slide_number >= section_totals) {
 		$container.find( ".mlw_qmn_quiz_link.mlw_next" ).hide();
 	} else if (slide_number < section_totals) {
@@ -680,8 +684,8 @@ function qmnUpdatePageNumber( amount, quiz_form_id ) {
 }
 
 function qmnInitPagination( quiz_id ) {
-
-	var qmn_section_total = +qmn_quiz_data[quiz_id].pagination.total_questions + 1;
+	var qmn_section_total = +qmn_quiz_data[quiz_id].pagination.total_questions;
+	// var qmn_section_total = +qmn_quiz_data[quiz_id].pagination.total_questions + 1;
 	if ( qmn_quiz_data[quiz_id].pagination.section_comments === '0' ) {
 		qmn_section_total += 1;
 	}
