@@ -69,8 +69,12 @@ class QSM_Install {
 		'label' => __( 'Show a progress bar?', 'quiz-master-next' ),
 		'type' => 'radio',
 		'options' => array(
+      array(
+      'label' => __( 'Progress bar updated on question answered', 'quiz-master-next' ),
+      'value' => 2
+      ),
 		  array(
-			'label' => __( 'Yes', 'quiz-master-next' ),
+			'label' => __( 'Progress bar updated on page change', 'quiz-master-next' ),
 			'value' => 1
 		  ),
 		  array(
