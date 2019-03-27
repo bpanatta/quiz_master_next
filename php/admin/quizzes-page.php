@@ -167,10 +167,8 @@ function qsm_generate_quizzes_surveys_page() {
 				<table class="widefat">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Name', 'quiz-master-next' ); ?></th>
-							<th><?php esc_html_e( 'URL', 'quiz-master-next' ); ?></th>
-							<th><?php esc_html_e( 'Shortcode', 'quiz-master-next' ); ?></th>
-							<th><?php esc_html_e( 'Link Shortcode', 'quiz-master-next' ); ?></th>
+							<th><?php esc_html_e( 'Name', 'quiz-master-next' ); ?></th>							
+							<th><?php esc_html_e( 'Shortcode', 'quiz-master-next' ); ?></th>							
 							<th><?php esc_html_e( 'Views/Taken', 'quiz-master-next' ); ?></th>
 							<th><?php esc_html_e( 'Last Modified', 'quiz-master-next' ); ?></th>
 						</tr>
@@ -180,10 +178,8 @@ function qsm_generate_quizzes_surveys_page() {
 					</tbody>
 					<tfoot>
 						<tr>
-							<th><?php esc_html_e( 'Name', 'quiz-master-next' ); ?></th>
-							<th><?php esc_html_e( 'URL', 'quiz-master-next' ); ?></th>
-							<th><?php esc_html_e( 'Shortcode', 'quiz-master-next' ); ?></th>
-							<th><?php esc_html_e( 'Link Shortcode', 'quiz-master-next' ); ?></th>
+							<th><?php esc_html_e( 'Name', 'quiz-master-next' ); ?></th>							
+							<th><?php esc_html_e( 'Shortcode', 'quiz-master-next' ); ?></th>							
 							<th><?php esc_html_e( 'Views/Taken', 'quiz-master-next' ); ?></th>
 							<th><?php esc_html_e( 'Last Modified', 'quiz-master-next' ); ?></th>
 						</tr>
@@ -195,11 +191,11 @@ function qsm_generate_quizzes_surveys_page() {
 				?>
 				<div class="qsm-news-ads">
 					<h3 class="qsm-news-ads-title"><?php esc_html_e( 'QSM News', 'quiz-master-next' ); ?></h3>
-					<div class="qsm-info-widget">
+<!--					<div class="qsm-info-widget">
 						<h3>Keep your WordPress site healthy and secure!</h3>
 						<p>Easily monitor your WordPress sites to ensure they stay up, healthy, and secure with our new WordPress plugin, WP Health!</p>
 						<a target="_blank" href="http://bit.ly/2Mr2SqC" class="button-primary"><?php esc_html_e( 'Learn More', 'quiz-master-next' ); ?></a>
-					</div>
+					</div>-->
 					<div class="qsm-info-widget">
 						<h3><?php esc_html_e( 'Subscribe to our newsletter!', 'quiz-master-next' ); ?></h3>
 						<p><?php esc_html_e( 'Join our mailing list to learn about our newest features, receive email-only promotions, receive tips and guides, and more!', 'quiz-master-next' ); ?></p>
@@ -368,22 +364,22 @@ function qsm_generate_quizzes_surveys_page() {
 		<script type="text/template" id="tmpl-quiz-row">
 			<tr class="qsm-quiz-row" data-id="{{ data.id }}">
 				<td class="post-title column-title">
-					<span class="qsm-quiz-name">{{ data.name }}</span> <a class="qsm-edit-name" href="#"><?php _e( 'Edit Name', 'quiz-master-next' ); ?></a>
+					<span class="qsm-quiz-name">{{ data.name }}</span> <a class="qsm-edit-name" href="#"><?php _e( 'Edit Name', 'quiz-master-next' ); ?></a><a class="quiz-preview-link" href="{{ data.link }}"><span class="dashicons dashicons-external"></span></a>
 					<div class="row-actions">
 						<a class="qsm-action-link" href="admin.php?page=mlw_quiz_options&&quiz_id={{ data.id }}"><?php _e( 'Edit', 'quiz-master-next' ); ?></a> | 
+                                                <a class="qsm-action-link" href="post.php?post={{ data.postID }}&action=edit"><?php _e( 'Post Settings', 'quiz-master-next' ); ?></a> | 
 						<a class="qsm-action-link" href="admin.php?page=mlw_quiz_results&&quiz_id={{ data.id }}"><?php _e( 'Results', 'quiz-master-next' ); ?></a> | 
 						<a class="qsm-action-link qsm-action-link-duplicate" href="#"><?php _e( 'Duplicate', 'quiz-master-next' ); ?></a> | 
-						<a class="qsm-action-link qsm-action-link-delete" href="#"><?php _e( 'Delete', 'quiz-master-next' ); ?></a>
+						<a class="qsm-action-link qsm-action-link-delete" href="#"><?php _e( 'Delete', 'quiz-master-next' ); ?></a> |                                                 
+                                                <a class="qsm-action-link" href="{{ data.link }}"><?php _e( 'Preview', 'quiz-master-next' ); ?></a>
 					</div>
-				</td>
+				</td>				
 				<td>
-					<a href="{{ data.link }}"><?php _e( 'View Quiz/Survey', 'quiz-master-next' ); ?></a>
-					<div class="row-actions">
-						<a class="qsm-action-link" href="post.php?post={{ data.postID }}&action=edit"><?php _e( 'Edit Post Settings', 'quiz-master-next' ); ?></a>
-					</div>
-				</td>
-				<td>[qsm quiz={{ data.id }}]</td>
-				<td>[qsm_link id={{ data.id }}]<?php _e( 'Click here', 'quiz-master-next' ); ?>[/qsm_link]</td>
+                                        <h3 class="sc-opener">Embed</h3>
+                                        <div class="sc-content">[qsm quiz={{ data.id }}]</div>
+                                        <h3 class="sc-opener">Link</h3>
+                                        <div class="sc-content">[qsm_link id={{ data.id }}]<?php _e( 'Click here', 'quiz-master-next' ); ?>[/qsm_link]</div>
+                                </td>				
 				<td>
 					{{ data.views }}/{{ data.taken }}
 					<div class="row-actions">
