@@ -6,9 +6,11 @@ var QSMContact;
 (function ($) {
   QSMContact = {
     load : function() {
-      $.each( qsmContactObject.contactForm, function( i, val ) {
-        QSMContact.addField( val );
-      });
+        if($.isArray(qsmContactObject.contactForm) && qsmContactObject.contactForm.length > 0){
+            $.each( qsmContactObject.contactForm, function( i, val ) {
+              QSMContact.addField( val );
+            });
+        }
     },
     addField : function( fieldArray ) {
       var contactField = $( '<div class="contact-form-field new">' +
@@ -19,6 +21,9 @@ var QSMContact;
               '<option value="text">Small Open Answer</option>' +
               '<option value="email">Email</option>' +
               '<option value="checkbox">Checkbox</option>' +
+              '<option value="cpf">CPF</option>' +
+              '<option value="date">Date</option>' +
+              '<option value="genre">Genre</option>' +
             '</select>' +
           '</div>' +
           '<div class="contact-form-group">' +
@@ -33,6 +38,9 @@ var QSMContact;
               '<option value="email">Email</option>' +
               '<option value="comp">Business</option>' +
               '<option value="phone">Phone</option>' +
+              '<option value="cpf">CPF</option>' +
+              '<option value="birthdate">Birth date</option>' +
+              '<option value="genre">Genre</option>' +
             '</select>' +
           '</div>' +
           '<div class="contact-form-group">' +
@@ -58,6 +66,15 @@ var QSMContact;
         case 'checkbox':
           contactField.find( '.type-control option[value="checkbox"]').prop( 'selected', true );
           break;
+        case 'cpf':
+          contactField.find( '.type-control option[value="cpf"]').prop( 'selected', true );
+          break;
+        case 'date':
+          contactField.find( '.type-control option[value="date"]').prop( 'selected', true );
+          break;
+        case 'genre':
+          contactField.find( '.type-control option[value="genre"]').prop( 'selected', true );
+          break;
         default:
 
       }
@@ -73,6 +90,15 @@ var QSMContact;
           break;
         case 'phone':
           contactField.find( '.use-control option[value="phone"]').prop( 'selected', true );
+          break;
+        case 'cpf':
+          contactField.find( '.use-control option[value="cpf"]').prop( 'selected', true );
+          break;
+        case 'birthdate':
+          contactField.find( '.use-control option[value="birthdate"]').prop( 'selected', true );
+          break;
+        case 'genre':
+          contactField.find( '.use-control option[value="genre"]').prop( 'selected', true );
           break;
         default:
 
